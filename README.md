@@ -1,5 +1,52 @@
-**This software is not ready for production! It is still being developed and it will change in the future.**
+# ctrees hack of loopback-angular-admin
+1. Setup
+    - git clone https://github.com/ctrees/loopback-angular-admin.git
+    - cd loopback-angular-admin
+    - npm install
+    - grunt build
+    - npm start
+    - browse to http://localhost:3000/
+    - Open DevTools (so we can get an API token when login)
+    - login admin@admin.com admin
+    - Get token from network traffic monitor
+    - browse to http://localhost:3000/explorer
+    - paste token into setToken box
+2. Mod some UI stuff to ID the project from it's fork
+    - hack server/boot/01-load-settings.js
+    - change appName value to: 'ctrees test'
+    - change appTheme value to: 'skin-black'
+    - grunt build
+    - npm start
+    - browse to http://localhost:3000/ login and verify changes
+3. Mod to add new data model
+    - Go to http://localhost:3000/#/app/sandbox/faker and click Posts
+    - Go to http://localhost:3000/#/app/posts to verify you see data (this is what we will clone)
+    - shutdown server
+    - Create new common model and generate new lb-services.js
+        - cp common/models/post.json common/models/poke.json
+        - cleanup poke.json and add reference to server/model-config.json
+        - cd client/app
+        - lb-ng ../../server/server.js js/lb-services.js
+    - Create new model crud in UI
+        - cp -R client/modules/posts client/modules/pokes
+        - cleanup file and names in pokes tree
+        - add to client/app/index.html
+            - script src="/modules/pokes/app.pokes.js"></script
+            - script src="/modules/pokes/config/pokes.config.js"></script
+            - script src="/modules/pokes/config/pokes.routes.js"></script
+            - script src="/modules/pokes/controllers/pokes.ctrl.js"></script
+            - script src="/modules/pokes/services/pokes.service.js"></script
+        - add com.module.pokes to client/app/js/app.js
+    - Test stuff
+    - grunt build
+    - npm start
+    - browse to http://localhost:3000/ login and verify changes
+4. Next Step...
 
+
+
+---
+**This software is not ready for production! It is still being developed and it will change in the future.**
 The goal is to have a starter project which can be used to quickly build an API with a frontend that are easily extended.
 
 # loopback-angular-admin

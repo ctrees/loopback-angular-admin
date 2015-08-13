@@ -13,11 +13,11 @@ module.exports = function(app) {
     var settings = [{
       type: 'string',
       key: 'appName',
-      value: 'Loopback Admin'
+      value: 'ctrees test'
     }, {
       type: 'select',
       key: 'appTheme',
-      value: 'skin-blue',
+      value: 'skin-black',
       options: [
         'skin-blue',
         'skin-black'

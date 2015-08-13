@@ -26,10 +26,18 @@
         - cp common/models/post.json common/models/poke.json
         - cleanup poke.json and add reference to server/model-config.json
         - cd client/app
+        - mv js/lb-services.js js/lb-services_org
         - lb-ng ../../server/server.js js/lb-services.js
+        - cd ../../
     - Create new model crud in UI
-        - cp -R client/modules/posts client/modules/pokes
+        - cp -R client/app/modules/posts client/app/modules/pokes
         - cleanup file and names in pokes tree
+            - cd client/app/modules/pokes/
+            - mv app.posts.js app.pokes.js
+            - mv config/posts.config.js config/pokes.config.js 
+            - mv config/posts.routes.js config/pokes.routes.js 
+            - mv controllers/posts.ctrl.js controllers/pokes.ctrl.js 
+            - mv services/posts.service.js services/pokes.service.js 
         - add to client/app/index.html
             - script src="/modules/pokes/app.pokes.js"></script
             - script src="/modules/pokes/config/pokes.config.js"></script
@@ -37,11 +45,16 @@
             - script src="/modules/pokes/controllers/pokes.ctrl.js"></script
             - script src="/modules/pokes/services/pokes.service.js"></script
         - add com.module.pokes to client/app/js/app.js
-    - Test stuff
     - grunt build
     - npm start
     - browse to http://localhost:3000/ login and verify changes
-4. Next Step...
+    - Test stuff
+4. Next Step... ?? move to mysql db ??
+5. Next Step... ?? behat testing ??
+6. Next Step... ?? More seed data via faker ??
+7. Next Step... ?? move to alternate css stuff ??
+
+
 
 
 
